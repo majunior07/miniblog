@@ -28,6 +28,7 @@ export const useAuthentication = () => {
         checkIfIsCancelled();
 
         setLoading(true);
+        setError(null)
 
         try {
             const {user} = await createUserWithEmailAndPassword(
@@ -46,10 +47,25 @@ export const useAuthentication = () => {
 
             console.log(error.messege);
             console.log(typeof error.messege);
-        }
+
+            let systemErrorMessage
+
+            if(error.messege.includes("Password")) {
+                systemErrorMessage = "A senha precisa conter pelo menos 6 caracters."
+            } else if(error.messege.includes("email-alredy")) {
+                systemErrorMessage = "E-mail já cadastrado."
+            } else {
+                systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
+            }
+
+            setError(systemErrorMessage);
+
+        }        
 
         setLoading(false);
     };
+
+    
 
     return{
         auth, 
