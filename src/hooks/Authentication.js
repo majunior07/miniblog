@@ -1,3 +1,5 @@
+import { db } from '../firebase/config';
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -28,7 +30,7 @@ export const useAuthentication = () => {
         checkIfIsCancelled();
 
         setLoading(true);
-        setError(null)
+        setError(null);
 
         try {
             const {user} = await createUserWithEmailAndPassword(
@@ -41,7 +43,7 @@ export const useAuthentication = () => {
                 displayName: data.displayName
             })
 
-            return user;
+            return user
 
         } catch (error) {
 
@@ -50,9 +52,9 @@ export const useAuthentication = () => {
 
             let systemErrorMessage
 
-            if(error.messege.includes("Password")) {
+            if(error.message.includes("Password")) {
                 systemErrorMessage = "A senha precisa conter pelo menos 6 caracters."
-            } else if(error.messege.includes("email-alredy")) {
+            } else if(error.message.includes("email-alredy")) {
                 systemErrorMessage = "E-mail já cadastrado."
             } else {
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
@@ -65,9 +67,11 @@ export const useAuthentication = () => {
         setLoading(false);
     };
 
-    
+    useEffect(() => {
+        return () => setCancelled(true);
+    }, []);
 
-    return{
+    return  {
         auth, 
         createUser,
         error,
