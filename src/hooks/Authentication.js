@@ -40,10 +40,12 @@ export const useAuthentication = () => {
             )
 
             await updateProfile(user, {
-                displayName: data.displayName
-            })
+                displayName: data.displayName,
+            });
 
-            return user
+            setLoading(false);
+
+            return user;
 
         } catch (error) {
 
@@ -61,10 +63,8 @@ export const useAuthentication = () => {
             }
 
             setError(systemErrorMessage);
-
         }        
 
-        setLoading(false);
     };
 
     useEffect(() => {
