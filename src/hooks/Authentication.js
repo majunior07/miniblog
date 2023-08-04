@@ -86,6 +86,7 @@ export const useAuthentication = () => {
         try {
 
             await signInWithEmailAndPassword(auth, data.email, data.password)
+            setLoading(false);
 
         } catch(error) {
 
@@ -93,8 +94,14 @@ export const useAuthentication = () => {
 
             if(error.message.includes("user-not-found")) {
                 systemErrorMessage = "Usuário não encontrado."
+            } else if(error.message.includes("wrong-password")) {
+                systemErrorMessage = "Senha incorreta."
+            } else {
+                systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
             }
 
+            setError(systemErrorMessage);
+            setLoading(false);
         }
     }
 
