@@ -75,6 +75,29 @@ export const useAuthentication = () => {
         signOut(auth);
     };
 
+    // login - sign in
+    const login = async(data) => {
+
+        checkIfIsCancelled()
+
+        setLoading(true)
+        setError(false)
+
+        try {
+
+            await signInWithEmailAndPassword(auth, data.email, data.password)
+
+        } catch(error) {
+
+            let systemErrorMessage;
+
+            if(error.message.includes("user-not-found")) {
+                systemErrorMessage = "Usuário não encontrado."
+            }
+
+        }
+    }
+
     useEffect(() => {
         return () => setCancelled(true);
     }, []);
