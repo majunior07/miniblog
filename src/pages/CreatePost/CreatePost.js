@@ -9,7 +9,7 @@ const CreatePost = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [body, setBody] = useState("");
-    const [tags, setTages] = useState([]);
+    const [tags, setTags] = useState([]);
     const [formError, setFormError] = useState("");
 
     const handleSubmit = (e) => {
@@ -45,7 +45,24 @@ const CreatePost = () => {
                 </label>
                 <label>
                     <span>Conteúdo:</span>
-                   <textarea name="body" requerd placeholder=""></textarea>
+                    <textarea 
+                        name="body" 
+                        required 
+                        placeholder="Insira o conteúdo do post"
+                        onChange={(e) => setBody(e.target.value)}
+                        value={body}
+                    ></textarea>
+                </label>
+                <label>
+                    <span>Tags:</span>
+                    <input 
+                        title="text" 
+                        name="tags" 
+                        required 
+                        placeholder="Insira as tags separadas por vírgula" 
+                        onChange={(e) => setTags(e.target.value)}
+                        value={tags}
+                    />
                 </label>
             </form>
         </div>
