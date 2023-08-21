@@ -2,7 +2,8 @@ import styles from './CreatePost.module.css';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAsyncValue } from 'react-router-dom';
+import { useAuthValue } from '../../context/AutfContext';
+import { useInsertDocument } from '../../hooks/useInsertDocuments';
 
 const CreatePost = () => {
 
@@ -12,8 +13,29 @@ const CreatePost = () => {
     const [tags, setTags] = useState([]);
     const [formError, setFormError] = useState("");
 
+    const {user} = useAuthValue()
+
+    const {insertDocument, response} = useInsertDocument()
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        setFormError("")
+
+        // validate image URL
+
+        // criar o array de tags
+
+        // checar todos os valores
+
+        insertDocument({
+            title,
+            image,
+            body,
+            tags,
+            uid: user.uid,
+            createdBy: user.displayName 
+        })
+
     };
 
     return(
