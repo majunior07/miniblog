@@ -15,7 +15,7 @@ const CreatePost = () => {
 
     const {user} = useAuthValue()
 
-    const {insertDocument, response} = useInsertDocument()
+    const {insertDocument, response} = useInsertDocument("posts");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,8 +33,10 @@ const CreatePost = () => {
             body,
             tags,
             uid: user.uid,
-            createdBy: user.displayName 
-        })
+            createdBy: user.displayName ,
+        });
+
+        // redirect to home page
 
     };
 
@@ -62,7 +64,7 @@ const CreatePost = () => {
                         required 
                         placeholder="Insira uma imagem que representa o seu post" 
                         onChange={(e) => setImage(e.target.value)}
-                        value={title}
+                        value={image}
                     />
                 </label>
                 <label>
@@ -86,14 +88,13 @@ const CreatePost = () => {
                         value={tags}
                     />
                 </label>
-                {<button className='btn'>Cadastrar</button>}
-                {/*!loading &&  <button className="btn">Cadastrar</button>}
-                {loading &&(
+                {!response.loading &&  <button className="btn">Cadastrar</button>}
+                {response.loading &&(
                  <button className="btn" disabled>
                     Aguarde...
                 </button>
                )}
-                {error && <p className='error'>{error}</p>*/}
+                {response.error && <p className='error'>{response.error}</p>}
             </form>
         </div>
     );
