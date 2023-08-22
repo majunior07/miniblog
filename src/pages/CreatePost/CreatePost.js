@@ -13,7 +13,7 @@ const CreatePost = () => {
     const [tags, setTags] = useState([]);
     const [formError, setFormError] = useState("");
 
-    const {user} = useAuthValue()
+    const {user} = useAuthValue();
 
     const {insertDocument, response} = useInsertDocument("posts");
 
@@ -33,7 +33,7 @@ const CreatePost = () => {
             body,
             tags,
             uid: user.uid,
-            createdBy: user.displayName ,
+            createdBy: user.displayName 
         });
 
         // redirect to home page
@@ -48,7 +48,7 @@ const CreatePost = () => {
                 <label>
                     <span>Título:</span>
                     <input 
-                        title="text" 
+                        type="text" 
                         name="title" 
                         required 
                         placeholder="Pense num bom título..." 
@@ -59,7 +59,7 @@ const CreatePost = () => {
                 <label>
                     <span>URL da imagem:</span>
                     <input 
-                        title="text" 
+                        type="text" 
                         name="image" 
                         required 
                         placeholder="Insira uma imagem que representa o seu post" 
@@ -80,7 +80,7 @@ const CreatePost = () => {
                 <label>
                     <span>Tags:</span>
                     <input 
-                        title="text" 
+                        type="text" 
                         name="tags" 
                         required 
                         placeholder="Insira as tags separadas por vírgula" 
