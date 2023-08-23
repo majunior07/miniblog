@@ -89,12 +89,12 @@ const CreatePost = () => {
                     />
                 </label>
                 {!response.loading &&  <button className="btn">Cadastrar</button>}
-                {response.loading &&(
+                {response.loading && (
                  <button className="btn" disabled>
                     Aguarde...
                 </button>
                )}
-                {response.error && <p className='error'>{response.error}</p>}
+                {response.error && <p className="error">{response.error}</p>}
             </form>
         </div>
     );
