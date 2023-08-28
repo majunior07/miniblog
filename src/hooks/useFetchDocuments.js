@@ -20,9 +20,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
     useEffect(() => {
 
         async function loadData() {
-            if(cancelled) return
+            if(cancelled) return;
 
-            setLoading(true)
+            setLoading(true);
 
             const collectionRef = await collection(db, docCollection);
 
@@ -44,8 +44,18 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                         }))
                     );
                 });
-            } catch (error) {}
+
+                setLoading(false);
+
+            } catch (error) {
+
+              console.log(error);
+              setError(error.message);
+
+              setLoading(false);
+            }    
             
+            loadData();
         }
     }, [docCollection, search, uid, cancelled]);
 };
