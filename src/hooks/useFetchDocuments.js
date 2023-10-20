@@ -53,9 +53,16 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
               setError(error.message);
 
               setLoading(false);
-            }    
-            
-            loadData();
+            }          
         }
+
+        loadData();
+
     }, [docCollection, search, uid, cancelled]);
+
+    useEffect(() => {
+        return () => setCancelled(true);
+    }, []);
+
+    return { documents, loading, error};
 };
