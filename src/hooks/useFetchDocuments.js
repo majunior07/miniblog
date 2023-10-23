@@ -32,8 +32,12 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 // busca
                 //dashboard
 
-                if() {
-                    
+                if(search) {
+                    q = await query(
+                        collectionRef, 
+                        where("tags", "array-contains", search),
+                        orderBy("createdAt", "desc")
+                    );
                 } else {
                     q = await query(collectionRef, orderBy("createdAt", "desc"));
                 }
