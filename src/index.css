@@ -87,7 +87,7 @@ textarea {
   padding: 7px 30px;
 }
 
-btn:hover {
+.btn:hover {
   background-color: #0F730c;
   color: #fff;
 }
