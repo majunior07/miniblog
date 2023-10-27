@@ -8,7 +8,7 @@ const PostDetail = ({post}) => {
             <img src={post.image} alt={post.title} />
             <h2>{post.title}</h2>
             <p className={styles.createdBy}>{post.createdBy}</p>
-            <div className={styles.tag}>
+            <div className={styles.tags}>
                 {post.tagsArray.map((tag) => (
                     <p key={tag}>
                         <span>#</span>
