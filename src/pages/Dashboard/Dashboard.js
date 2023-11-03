@@ -31,7 +31,7 @@ const Dashboard = () => {
                 </div>
             )}
 
-            {posts && posts.map((post) => <h3>{posts.title}</h3>)}
+            {posts && posts.map((post) => <h3>{post.title}</h3>)}
         </div>
     );
 };
