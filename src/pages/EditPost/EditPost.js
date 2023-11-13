@@ -74,7 +74,7 @@ const EditPost = () => {
     };
 
     return(
-        <div className={styles.create_post}>
+        <div className={styles.edit_post}>
             {post && (
                 <>
                     <h2>Editando post: {post.title}</h2>
@@ -102,6 +102,12 @@ const EditPost = () => {
                                 value={image}
                             />
                         </label>
+                        <p className={styles.preview_title}>Preview da imagem atual:</p>
+                        <img 
+                            className={styles.image_preview}
+                            src={post.image}
+                            alt={post.title}
+                        />
                         <label>
                             <span>Conteúdo:</span>
                             <textarea 
@@ -123,7 +129,7 @@ const EditPost = () => {
                                 value={tags}
                             />
                         </label>
-                        {!response.loading &&  <button className="btn">Cadastrar</button>}
+                        {!response.loading &&  <button className="btn">Editar</button>}
                         {response.loading && (
                         <button className="btn" disabled>
                             Aguarde...
