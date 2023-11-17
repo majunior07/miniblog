@@ -1,6 +1,5 @@
 .post_container {
     text-align: center;
-    
 }
 
 .post_container h3 {
@@ -22,3 +21,9 @@
 .tags span {
     font-weight: bold;
 }
+
+.post_container img {
+    width: 60%;
+    height: 60%;
+}
+
