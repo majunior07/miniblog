@@ -23,7 +23,9 @@
 }
 
 .post_container img {
-    width: 60%;
-    height: 60%;
+    /* auterado 22/11/2023 18:20 hs */
+    width: 900px;
+    height: 700px;
+    border: 5px solid red;
 }
 
